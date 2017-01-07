@@ -1,0 +1,37 @@
+
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no" />
+	<title>数独游戏</title>
+	<link rel="Stylesheet" type="text/css" href="soduku.css" />
+</head>
+<body>
+	<ul class = "btn-group">
+		<li onclick = "sd.checkRes();">我完成了</li>
+		<li onclick = "sd.reset();">重新开始</li>
+		<li onclick = "sd.again();">重玩本局</li>
+	</ul>
+	<div class="countTime">
+		用时<span class="timer"></span>秒
+	</div>
+	<script src="jquery.js"></script>
+	<script src="soduku.js"></script>
+	<script>
+		var sd = new SD;
+		sd.init(30);
+		var beginTime = new Date().getTime();
+		var delta=0;
+		function clock(){
+			$(".countTime>.timer").html(parseInt(delta/1000));
+		}
+
+
+		var timer = setInterval(function() {
+			delta = new Date().getTime() - beginTime;
+			clock();
+		}, 1000);
+	</script>
+</body>
+</html>
